@@ -1,83 +1,114 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>It's Fang's Web</title>
-        <style>
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crayon Fang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: KaiTi;
+            background-color: #fdf6f9;
+            color: #5a4b60;
+            overflow-x: hidden;
+        }
+
+        .petal {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ffccd5;
+            border-radius: 50% 0;
+            opacity: 0.7;
+            z-index: -1;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
             }
-            body{
-                font-family: KaiTi;
-                background-color: #fdf6f9;
-                color: #5a4b60;
-                overflow-x: hidden;
-            }
-            header {
-                background: linear-gradient(135deg, #f6c8e0, #d8b4fe);
-                padding: 60px 20px;
-                text-align: center;
-                color: white;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            }
-            header h1 {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-                text-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-            header p {
-                font-size: 1.2rem;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            .content {
-                max-width: 700px;
-                margin: 50px auto;
-                padding: 0 20px;
-            }
-            .section {
-                margin-bottom: 40px;
-                padding: 30px;
-                background-color: white;
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            }
-            .section h2 {
-                color: #9d4edd;
-                margin-bottom: 20px;
-                border-bottom: 2px solid #f3d9fa;
-                padding-bottom: 10px;
-            }
-            .section p {
-                line-height: 1.8;
-                font-size: 1.1rem;
-            }
-            .love-words {
-                background-color: #f8f0fc;
-                padding: 40px 20px;
-                text-align: center;
-                border-radius: 15px;
-                margin: 30px 0;
-            }
-            .love-words p {
-                font-size: 1.3rem;
-                color: #6b21a8;
-                line-height: 2;
-            }
-            footer {
-                background-color: #5a4b60;
-                color: white;
-                text-align: center;
-                padding: 30px 20px;
-                margin: auto;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
+        }
+
+        header {
+            background: linear-gradient(135deg, #f6c8e0, #d8b4fe);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #9d4edd;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f3d9fa;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .love-words {
+            background-color: #f8f0fc;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .love-words p {
+            font-size: 1.3rem;
+            color: #6b21a8;
+            line-height: 2;
+        }
+
+        footer {
+            background-color: #5a4b60;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="petals"></div>
+
+    <header>
             <h1>致我最喜欢最喜欢的罗宇</h1>
             <p>想把我所有的温柔和美好，都打包送给你</p>
         </header>
@@ -85,7 +116,7 @@
         <div class="content">
             <div class="section">
                 <h2>我们的故事</h2>
-                <p>我知道我有很多缺点，也总是惹你不开心。我之前也十分迷茫，不确信自己是否能配得上你，是否能给你幸福，所以我选择了逃避。但之后的每一天我都十分后悔，想着如果上天再给我一次机会的话，一定不会再把你弄丢了。而这个机会来了，所以我发誓，一定要竭尽全力的让你开心，请你相信我，好吗</p>
+                <p>我知道我有很多缺点，也总是惹你不开心，。我之前也十分迷茫，不确信自己是否能配得上你，是否能给你幸福，所以我选择了逃避。但之后的每一天我都十分后悔，想着如果上天再给我一次机会的话，一定不会再把你弄丢了。而这个机会来了，所以我发誓，一定要竭尽全力的让你开心，请你相信我，好吗</p>
             </div>
             <div class="love-words">
                 <p>我想和你一起看很多次日出日落 <br>
@@ -103,5 +134,33 @@
             <p>给最珍贵的你 ❤️</p>
             <p>永远爱你的人 ❤️</p>
         </footer>
-    </body>
+
+    <script>
+        function createPetal() {
+            const petals = document.getElementById('petals');
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            const size = Math.random() * 10 + 5;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.top = `-${size}px`;
+            petal.style.backgroundColor = Math.random() > 0.5 ? '#ffccd5' : '#d8b4fe';
+            petal.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            petal.style.animationDelay = `${Math.random() * 5}s`;
+            
+            petals.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, 15000);
+        }
+        
+        setInterval(createPetal, 300);
+        for (let i = 0; i < 10; i++) {
+            createPetal();
+        }
+    </script>
+</body>
 </html>
